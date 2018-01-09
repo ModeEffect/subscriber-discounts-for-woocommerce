@@ -1,0 +1,207 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Subscriber Discounts for WooCommerce\n"
+"POT-Creation-Date: 2017-11-22 10:58-0700\n"
+"PO-Revision-Date: 2017-11-22 10:58-0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: subscriber-discounts-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: includes/options-page.php:11
+msgid "Subscriber Discounts"
+msgstr ""
+
+#: includes/options-page.php:37
+msgid "Subscriber Discount Settings"
+msgstr ""
+
+#: includes/options-page.php:42
+msgid "Discount Code Settings"
+msgstr ""
+
+#: includes/options-page.php:47
+msgid "MailChimp Key"
+msgstr ""
+
+#: includes/options-page.php:51
+msgid ""
+"Enter a random string of letters and numbers to be used as a means of "
+"verifying data is coming from MailChimp. Leave blank if not using MailChimp."
+msgstr ""
+
+#: includes/options-page.php:56
+msgid "Active Campaign Key"
+msgstr ""
+
+#: includes/options-page.php:60
+msgid ""
+"Enter a random string of letters and numbers to be used as a means of "
+"verifying data is coming from Active Campaign. Leave blank if not using "
+"Active Campaign."
+msgstr ""
+
+#: includes/options-page.php:65
+msgid "Discount Amount"
+msgstr ""
+
+#: includes/options-page.php:69
+#, php-format
+msgid "Amount of the discount (i.e. 20 for 20% or $20)"
+msgstr ""
+
+#: includes/options-page.php:74
+msgid "Discount Type"
+msgstr ""
+
+#: includes/options-page.php:79
+msgid "Fixed"
+msgstr ""
+
+#: includes/options-page.php:80
+msgid "Percent"
+msgstr ""
+
+#: includes/options-page.php:82
+msgid "Is the discount amount a fixed amount or percentage?"
+msgstr ""
+
+#: includes/options-page.php:87
+msgid "Use Only One Coupon?"
+msgstr ""
+
+#: includes/options-page.php:91
+msgid ""
+"Check this box if the coupon cannot be used in conjunction with other "
+"coupons."
+msgstr ""
+
+#: includes/options-page.php:96
+msgid "Exclude Sale Items?"
+msgstr ""
+
+#: includes/options-page.php:100
+msgid ""
+"Check this box if the coupon cannot be used with items that are on sale."
+msgstr ""
+
+#: includes/options-page.php:105
+msgid "Require Same Email?"
+msgstr ""
+
+#: includes/options-page.php:109
+msgid ""
+"Check to require the customer use the same email address as they subscribed "
+"to your newsletter with."
+msgstr ""
+
+#: includes/options-page.php:114
+msgid "Max Uses"
+msgstr ""
+
+#: includes/options-page.php:118
+msgid ""
+"The maximum number of times this discount can be used. Leave blank for "
+"unlimited."
+msgstr ""
+
+#: includes/options-page.php:123
+msgid "Email Settings"
+msgstr ""
+
+#: includes/options-page.php:128
+msgid "Email Subject"
+msgstr ""
+
+#: includes/options-page.php:132
+msgid ""
+"What will appear in the subject line of the email sent to your subscribers. "
+"(i.e. Thanks for subscribing here is your discount.)"
+msgstr ""
+
+#: includes/options-page.php:137
+msgid "From Email Address"
+msgstr ""
+
+#: includes/options-page.php:141
+msgid ""
+"The email address that this message should come from. (i.e. "
+"support@yourdomain.com)"
+msgstr ""
+
+#: includes/options-page.php:146
+msgid "From Display Name"
+msgstr ""
+
+#: includes/options-page.php:150
+msgid "The name that this message should come from. (i.e. Your Store Name)"
+msgstr ""
+
+#: includes/options-page.php:155
+msgid "Customer Placeholder Name"
+msgstr ""
+
+#: includes/options-page.php:159
+msgid ""
+"To be used in the {firstname} placeholder if no name is provided by the "
+"customer. (i.e. There! or You!)"
+msgstr ""
+
+#: includes/options-page.php:164
+msgid "Message"
+msgstr ""
+
+#: includes/options-page.php:168
+msgid ""
+"The message to be sent to your customer with the discount code. (i.e. Hey "
+"{firstname}! Thanks for signing up for our newsletter. Here is your discount "
+"code: {code}).<br />You can use the following placeholder tags to be filled "
+"in when the message is sent: <br /><code>{firstname}</code> - enters the "
+"customer's first name or the value entered as the customer placeholder name "
+"above.<br /><code>{code}</code> - use where you want the discount code to be "
+"displayed in your message.<br />Basic HTML markup can be used to customize "
+"the layout:<br /><code>&lt;br /&gt;</code>: Inserts a line break<br /"
+"><code>&lt;strong&gt;Your text&lt;/strong&gt;</code>: Makes \"Your text\" "
+"bold<br /><code>&lt;em&gt;Your text&lt;/em&gt;</code>: Makes \"Your text\" "
+"italicised"
+msgstr ""
+
+#: includes/options-page.php:174
+msgid "Save Options"
+msgstr ""
+
+#: includes/sdwoo.php:33
+#, php-format
+msgid ""
+"Sorry, Subscriber Discounts requires <a href=\"%s\">WooCommerce</a>. It has "
+"been deactivated."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Subscriber Discounts for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://scottdeluzio.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Automatically email a discount code to new subscribers."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Scott DeLuzio"
+msgstr ""
