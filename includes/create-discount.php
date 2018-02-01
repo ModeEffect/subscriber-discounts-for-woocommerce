@@ -128,7 +128,7 @@ class SDWOO_Create_Discount {
 			'amount'		=> $this->sdwoo_options[ 'discount_amount' ],
 			'type'			=> $this->sdwoo_options[ 'discount_type' ],
 			'use_one'		=> 'yes' == $this->sdwoo_options[ 'discount_use_one' ] ? 'yes' : 'no',
-			'exclude_sale'	=> 'yes' == $this->sdwoo_options[ 'exclude_sale' ] ? 'yes' : '',
+			'exclude_sale_items'	=> 'yes' == $this->sdwoo_options[ 'exclude_sale_items' ] ? 'yes' : '',
 		);
 
 		//Create the discount
@@ -155,13 +155,13 @@ class SDWOO_Create_Discount {
 }
 
 function woo_store_discount( $discount_args ){
-	$coupon_code	= $discount_args[ 'code' ];			// Code
-	$amount			= $discount_args[ 'amount' ];		// Coupon Amount
-	$discount_type	= $discount_args[ 'type' ];			// Type: fixed_cart, percent, fixed_product, percent_product
-	$individual_use	= $discount_args[ 'use_one' ];		// Can coupon be used with other coupons?
-	$usage_limit	= $discount_args[ 'max' ];
-	$exclude_sale	= $discount_args[ 'exclude_sale' ];	// Should the coupon be applied to items that are on sale?
-	$email 			= $discount_args[ 'email' ];
+	$coupon_code		= $discount_args[ 'code' ];					// Code
+	$amount				= $discount_args[ 'amount' ];				// Coupon Amount
+	$discount_type		= $discount_args[ 'type' ];					// Type: fixed_cart, percent, fixed_product, percent_product
+	$individual_use		= $discount_args[ 'use_one' ];				// Can coupon be used with other coupons?
+	$usage_limit		= $discount_args[ 'max' ];
+	$exclude_sale_items	= $discount_args[ 'exclude_sale_items' ];	// Should the coupon be applied to items that are on sale?
+	$email 				= $discount_args[ 'email' ];
 
 	$coupon = array(
 		'post_title'	=> $coupon_code,
@@ -181,7 +181,7 @@ function woo_store_discount( $discount_args ){
 	update_post_meta( $new_coupon_id, 'exclude_product_ids', '' );
 	update_post_meta( $new_coupon_id, 'customer_email', $email );
 	update_post_meta( $new_coupon_id, 'usage_limit', $usage_limit );
-	update_post_meta( $new_coupon_id, 'exclude_sale', $exclude_sale );
+	update_post_meta( $new_coupon_id, 'exclude_sale_items', $exclude_sale_items );
 	update_post_meta( $new_coupon_id, 'expiry_date', '' );
 	update_post_meta( $new_coupon_id, 'apply_before_tax', 'yes' );
 	update_post_meta( $new_coupon_id, 'free_shipping', 'no' );
