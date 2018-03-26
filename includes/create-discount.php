@@ -122,13 +122,13 @@ class SDWOO_Create_Discount {
 		}
 
 		$discount_args = array(
-			'code'			=> $final_code,
-			'email'			=> 'yes' == $this->sdwoo_options[ 'same_email' ] ? $this->get_email() : '',
-			'max'			=> $this->sdwoo_options[ 'discount_max' ],
-			'amount'		=> $this->sdwoo_options[ 'discount_amount' ],
-			'type'			=> $this->sdwoo_options[ 'discount_type' ],
-			'use_one'		=> 'yes' == $this->sdwoo_options[ 'discount_use_one' ] ? 'yes' : 'no',
-			'exclude_sale_items'	=> 'yes' == $this->sdwoo_options[ 'exclude_sale_items' ] ? 'yes' : '',
+			'code'					=> $final_code,
+			'email'					=> 'yes' == $this->sdwoo_options[ 'same_email' ] ? $this->get_email() : '',
+			'max'					=> $this->sdwoo_options[ 'discount_max' ],
+			'amount'				=> $this->sdwoo_options[ 'discount_amount' ],
+			'type'					=> $this->sdwoo_options[ 'discount_type' ],
+			'use_one'				=> 'yes' == $this->sdwoo_options[ 'discount_use_one' ] ? 'yes' : 'no',
+			'exclude_sale_items'	=> 'yes' == $this->sdwoo_options[ 'exclude_sale' ] ? 'yes' : '',
 		);
 
 		//Create the discount

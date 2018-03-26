@@ -3,8 +3,8 @@ Contributors: scott.deluzio
 Tags: WooCommerce, MailChimp, ActiveCampaign, Discounts
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FG5QVYUDG6YUA
 Requires at least: 2.9
-Tested up to: 4.9.2
-Stable tag: 1.1.4
+Tested up to: 4.9.4
+Stable tag: 1.1.5
 License: GNU v2+
 
 Easily send mailing list subscribers a discount code for joining your list.
@@ -83,6 +83,8 @@ Your webhook callback URL should be http://yourdomain.com/?trigger-special-disco
 Replace yourdomain.com with your actual website domain, and replace xxxxxxxxxxxx with the ActiveCampaign Key entered in the plugin settings.
 
 == Changelog ==
+= 1.1.5 =
+* Fix: Typo in exclude sale items in create-discount.php
 = 1.1.4 =
 * Fix: Incorrect meta key used for excluding sale items. `exclude_sale` was used instead of the correct `exclude_sale_items`
 = 1.1.3 =
