@@ -112,6 +112,7 @@ class SDWOO_Create_Discount {
 		if ( !$this->can_discount() ){
 			return;
 		}
+		$email_address	= $this->get_email(); // Create a variable so the function doesn't have to be called several times.
 		$timestamp		= time();
 		$numbers_array	= str_split( $timestamp . rand( 10, 99 ) );
 		$letters_array	= array_combine( range( 1, 26 ), range( 'a', 'z' ) );
@@ -121,9 +122,11 @@ class SDWOO_Create_Discount {
 			$final_code .= $letters_array[ $value ];
 		}
 
-		$discount_args = array(
+		$final_code		= apply_filters( 'sdwoo_discount_code', $final_code, $email_address );
+
+		$discount_args	= array(
 			'code'					=> $final_code,
-			'email'					=> 'yes' == $this->sdwoo_options[ 'same_email' ] ? $this->get_email() : '',
+			'email'					=> 'yes' == $this->sdwoo_options[ 'same_email' ] ? $email_address : '',
 			'max'					=> $this->sdwoo_options[ 'discount_max' ],
 			'amount'				=> $this->sdwoo_options[ 'discount_amount' ],
 			'type'					=> $this->sdwoo_options[ 'discount_type' ],
@@ -150,7 +153,7 @@ class SDWOO_Create_Discount {
 			'Content-Type: text/html; charset=UTF-8',
 			'From: ' . $this->sdwoo_options[ 'from_name' ] . ' <' . $this->sdwoo_options[ 'from_email' ] . '>'
 		);
-		wp_mail( $this->get_email(), $subject, $message, $headers );
+		wp_mail( $email_address, $subject, $message, $headers );
 	}
 }
 
