@@ -134,6 +134,8 @@ class SDWOO_Create_Discount {
 			'exclude_sale_items'	=> 'yes' == $this->sdwoo_options[ 'exclude_sale' ] ? 'yes' : '',
 		);
 
+		$discount_args	= apply_filters( 'sdwoo_discount_args', $discount_args );
+
 		//Create the discount
 		woo_store_discount( $discount_args );
 

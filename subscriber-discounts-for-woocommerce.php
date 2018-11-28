@@ -4,7 +4,7 @@
  * Plugin URI: https://scottdeluzio.com
  * Description: Automatically email a discount code to new subscribers.
  * Tags: WooCommerce, MailChimp, ActiveCampaign, Discounts
- * Version: 1.2.0
+ * Version: 1.3.0
  * Author: Scott DeLuzio
  * Author URI: https://scottdeluzio.com
  * Text Domain: sdwoo
