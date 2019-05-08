@@ -1,10 +1,11 @@
 <?php
 /**
  * Plugin Name: Subscriber Discounts for WooCommerce
- * Plugin URI: https://scottdeluzio.com
+ * Plugin URI: https://amplifyplugins.com
  * Description: Automatically email a discount code to new subscribers.
  * Tags: WooCommerce, MailChimp, ActiveCampaign, Discounts
  * Version: 1.3.0
+ * WC tested up to: 3.6.2
  * Author: Scott DeLuzio
  * Author URI: https://scottdeluzio.com
  * Text Domain: sdwoo
