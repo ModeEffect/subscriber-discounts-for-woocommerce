@@ -4,7 +4,7 @@ Tags: WooCommerce, MailChimp, ActiveCampaign, Discounts
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FG5QVYUDG6YUA
 Requires at least: 2.9
 Tested up to: 5.2.0
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GNU v2+
 
 Easily send mailing list subscribers a discount code for joining your list.
@@ -101,6 +101,8 @@ Your webhook callback URL should be http://yourdomain.com/?trigger-special-disco
 Replace yourdomain.com with your actual website domain, and replace xxxxxxxxxxxx with the ActiveCampaign Key entered in the plugin settings.
 
 == Changelog ==
+= 1.3.1 =
+* Updated WooCommerce tested up to version.
 = 1.3.0 =
 * New: Included filter for modifying discount code parameters. Filter sdwoo_discount_args gets passed the $discount_args array, which can be added to, or otherwise modified.
 = 1.2.0 =
@@ -119,5 +121,5 @@ Replace yourdomain.com with your actual website domain, and replace xxxxxxxxxxxx
 * Initial version
 
 == Upgrade Notice ==
-= 1.2.0 =
-* New: Included filter for customizing the generated discount code.
+= 1.3.1 =
+* Updated WooCommerce tested up to version.
