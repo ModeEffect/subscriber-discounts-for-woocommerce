@@ -5,7 +5,7 @@
  * Description: Automatically email a discount code to new subscribers.
  * Tags: WooCommerce, MailChimp, ActiveCampaign, Discounts
  * Version: 1.3.2
- * WC tested up to: 3.6.2
+ * WC tested up to: 4.3.1
  * Author: Scott DeLuzio
  * Author URI: https://scottdeluzio.com
  * Text Domain: sdwoo
