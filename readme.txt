@@ -3,8 +3,8 @@ Contributors: scott.deluzio
 Tags: WooCommerce, MailChimp, ActiveCampaign, Discounts
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FG5QVYUDG6YUA
 Requires at least: 2.9
-Tested up to: 5.2.0
-Stable tag: 1.3.1
+Tested up to: 5.5.0
+Stable tag: 1.3.2
 License: GNU v2+
 
 Easily send mailing list subscribers a discount code for joining your list.
@@ -70,8 +70,7 @@ You can find the technical details on how to create a webhook through MailChimp 
 
 General steps:
 
-* Click Lists tab
-* Click your list name
+* Click Audience tab > All Contacts
 * Click Settings > Webhooks
 * Click create new webhook button
 * Paste your callback URL
