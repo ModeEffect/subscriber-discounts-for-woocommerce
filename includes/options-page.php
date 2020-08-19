@@ -8,30 +8,61 @@ add_action( 'admin_menu', 'admin_settings_page' );
 add_action( 'admin_init', 'sdwoo_register_settings' );
 
 function admin_settings_page(){
-	add_submenu_page( 'woocommerce', __( 'Subscriber Discounts', 'sdwoo' ), __( 'Subscriber Discounts', 'sdwoo' ), 'manage_options', 'subscriber-discounts-woo', 'sdwoo_display_settings' );
+	add_submenu_page(
+		'woocommerce',
+		__( 'Subscriber Discounts', 'sdwoo' ),
+		__( 'Subscriber Discounts', 'sdwoo' ),
+		'manage_options',
+		'subscriber-discounts-woo',
+		'sdwoo_display_settings'
+	);
 }
 
 function sdwoo_register_settings(){
-	register_setting( 'subscriber_discounts_settings_group', 'sdwoo_settings' );
+	register_setting(
+		'subscriber_discounts_settings_group',
+		'sdwoo_settings'
+	);
+}
+
+add_action( 'admin_enqueue_scripts', 'sdwoo_searchable_menus' );
+/**
+ * CSS and JS for admin pages.
+ */
+function sdwoo_searchable_menus() {
+
+	// Searchable Dropdown.
+	wp_register_script( 'sdwoo_chosen_core_js', SDWOO_PLUGIN_URL . '/includes/js/chosen_v1.6.2/chosen.jquery.min.js', array( 'jquery' ), '1.0', false );
+
+	wp_register_script( 'sdwoo_searchable', SDWOO_PLUGIN_URL . '/includes/js/searchable-menu.js', array( 'jquery' ), '1.0', false );
+
+	wp_register_style( 'sdwoo_chosen_core_css', SDWOO_PLUGIN_URL . '/includes/js/chosen_v1.6.2/chosen.min.css' );
 }
 
 function sdwoo_display_settings(){
 	global $sdwoo_options;
 	$options = array(
-		'mailchimp_key'			=> isset( $sdwoo_options['mailchimp_key'] )			? $sdwoo_options['mailchimp_key'] : '',
-		'activecampaign_key'	=> isset( $sdwoo_options['activecampaign_key'] )	? $sdwoo_options['activecampaign_key'] : '',
-		'discount_amount'		=> isset( $sdwoo_options['discount_amount'] )		? $sdwoo_options['discount_amount'] : '',
-		'discount_type'			=> isset( $sdwoo_options['discount_type'] )			? $sdwoo_options['discount_type'] : '',
-		'discount_use_one'		=> isset( $sdwoo_options['discount_use_one'] )		? $sdwoo_options['discount_use_one'] : '',
-		'exclude_sale'			=> isset( $sdwoo_options['exclude_sale'] )			? $sdwoo_options['exclude_sale'] : '',
-		'same_email'			=> isset( $sdwoo_options['same_email'] )			? $sdwoo_options['same_email'] : '',
-		'discount_max'			=> isset( $sdwoo_options['discount_max'] )			? $sdwoo_options['discount_max'] : '',
-		'email_subject'			=> isset( $sdwoo_options['email_subject'] )			? $sdwoo_options['email_subject'] : '',
-		'from_email'			=> isset( $sdwoo_options['from_email'] )			? $sdwoo_options['from_email'] : '',
-		'from_name'				=> isset( $sdwoo_options['from_name'] )				? $sdwoo_options['from_name'] : '',
-		'name_placeholder'		=> isset( $sdwoo_options['name_placeholder'] )		? $sdwoo_options['name_placeholder'] : '',
-		'message'				=> isset( $sdwoo_options['message'] )				? $sdwoo_options['message'] : '',
+		'mailchimp_key'						=> isset( $sdwoo_options['mailchimp_key'] )					? $sdwoo_options['mailchimp_key'] : '',
+		'activecampaign_key'				=> isset( $sdwoo_options['activecampaign_key'] )			? $sdwoo_options['activecampaign_key'] : '',
+		'discount_amount'					=> isset( $sdwoo_options['discount_amount'] )				? $sdwoo_options['discount_amount'] : '',
+		'discount_type'						=> isset( $sdwoo_options['discount_type'] )					? $sdwoo_options['discount_type'] : '',
+		'discount_use_one'					=> isset( $sdwoo_options['discount_use_one'] )				? $sdwoo_options['discount_use_one'] : '',
+		'exclude_sale'						=> isset( $sdwoo_options['exclude_sale'] )					? $sdwoo_options['exclude_sale'] : '',
+		'same_email'						=> isset( $sdwoo_options['same_email'] )					? $sdwoo_options['same_email'] : '',
+		'discount_max'						=> isset( $sdwoo_options['discount_max'] )					? $sdwoo_options['discount_max'] : '',
+		'email_subject'						=> isset( $sdwoo_options['email_subject'] )					? $sdwoo_options['email_subject'] : '',
+		'from_email'						=> isset( $sdwoo_options['from_email'] )					? $sdwoo_options['from_email'] : '',
+		'from_name'							=> isset( $sdwoo_options['from_name'] )						? $sdwoo_options['from_name'] : '',
+		'name_placeholder'					=> isset( $sdwoo_options['name_placeholder'] )				? $sdwoo_options['name_placeholder'] : '',
+		'message'							=> isset( $sdwoo_options['message'] )						? $sdwoo_options['message'] : '',
+		'product_ids'						=> isset( $sdwoo_options['product_ids'] )					? $sdwoo_options['product_ids'] : '',
+		'exclude_product_ids'				=> isset( $sdwoo_options['exclude_product_ids'] )			? $sdwoo_options['exclude_product_ids'] : '',
+		'product_categories'				=> isset( $sdwoo_options['product_categories'] )			? $sdwoo_options['product_categories'] : '',
+		'exclude_product_categories'		=> isset( $sdwoo_options['exclude_product_categories'] )	? $sdwoo_options['exclude_product_categories'] : '',
 	);
+	wp_enqueue_script( 'sdwoo_chosen_core_js' );
+	wp_enqueue_script( 'sdwoo_searchable' );
+	wp_enqueue_style( 'sdwoo_chosen_core_css' );
 	?>
 	<div class="wrap">
 	<h2><?php _e('Subscriber Discount Settings', 'sdwoo'); ?></h2>
@@ -116,6 +147,42 @@ function sdwoo_display_settings(){
 					<td>
 						<input id="sdwoo_settings[discount_max]" name="sdwoo_settings[discount_max]" type="text" class="regular-text" value="<?php echo $options['discount_max']; ?>"/>
 						<p class="description" for="sdwoo_settings[discount_max]"><?php _e( 'The maximum number of times this discount can be used. Leave blank for unlimited.', 'sdwoo' ); ?></p>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row" valign="top">
+						<?php _e( 'Products', 'sdwoo' ); ?>
+					</th>
+					<td>
+						<?php echo sdwoo_product_list( 'product_ids', $options['product_ids'] ); ?>
+						<p class="description" for="sdwoo_settings[product_ids]"><?php _e( 'Products that the coupon will be applied to, or that need to be in the cart in order for the "Fixed cart discount" to be applied.', 'sdwoo' ); ?></p>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row" valign="top">
+						<?php _e( 'Excluded Products', 'sdwoo' ); ?>
+					</th>
+					<td>
+						<?php echo sdwoo_product_list( 'exclude_product_ids', $options['exclude_product_ids'] ); ?>
+						<p class="description" for="sdwoo_settings[exclude_product_ids]"><?php _e( 'Products that the coupon will not be applied to, or that cannot be in the cart in order for the "Fixed cart discount" to be applied.', 'sdwoo' ); ?></p>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row" valign="top">
+						<?php _e( 'Product Categories', 'sdwoo' ); ?>
+					</th>
+					<td>
+						<?php echo sdwoo_category_list( 'product_categories', $options['product_categories'] ); ?>
+						<p class="description" for="sdwoo_settings[product_categories]"><?php _e( 'Product categories that the coupon will be applied to, or that need to be in the cart in order for the "Fixed cart discount" to be applied.', 'sdwoo' ); ?></p>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row" valign="top">
+						<?php _e( 'Excluded Categories', 'sdwoo' ); ?>
+					</th>
+					<td>
+						<?php echo sdwoo_category_list( 'exclude_product_categories', $options['exclude_product_categories'] ); ?>
+						<p class="description" for="sdwoo_settings[exclude_product_categories]"><?php _e( 'Product categories that the coupon will not be applied to, or that cannot be in the cart in order for the "Fixed cart discount" to be applied.', 'sdwoo' ); ?></p>
 					</td>
 				</tr>
 			</tbody>

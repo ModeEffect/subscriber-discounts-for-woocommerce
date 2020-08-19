@@ -125,13 +125,17 @@ class SDWOO_Create_Discount {
 		$final_code		= apply_filters( 'sdwoo_discount_code', $final_code, $email_address );
 
 		$discount_args	= array(
-			'code'					=> $final_code,
-			'email'					=> 'yes' == $this->sdwoo_options[ 'same_email' ] ? $email_address : '',
-			'max'					=> $this->sdwoo_options[ 'discount_max' ],
-			'amount'				=> $this->sdwoo_options[ 'discount_amount' ],
-			'type'					=> $this->sdwoo_options[ 'discount_type' ],
-			'use_one'				=> 'yes' == $this->sdwoo_options[ 'discount_use_one' ] ? 'yes' : 'no',
-			'exclude_sale_items'	=> 'yes' == $this->sdwoo_options[ 'exclude_sale' ] ? 'yes' : '',
+			'code'							=> $final_code,
+			'email'							=> 'yes' == $this->sdwoo_options[ 'same_email' ] ? $email_address : '',
+			'max'							=> $this->sdwoo_options[ 'discount_max' ],
+			'amount'						=> $this->sdwoo_options[ 'discount_amount' ],
+			'type'							=> $this->sdwoo_options[ 'discount_type' ],
+			'use_one'						=> 'yes' == $this->sdwoo_options[ 'discount_use_one' ] ? 'yes' : 'no',
+			'exclude_sale_items'			=> 'yes' == $this->sdwoo_options[ 'exclude_sale' ] ? 'yes' : '',
+			'product_ids'					=> implode( ',', maybe_unserialize( $this->sdwoo_options['product_ids'] ) ),
+			'exclude_product_ids'			=> implode( ',', maybe_unserialize( $this->sdwoo_options['exclude_product_ids'] ) ),
+			'product_categories'			=> implode( ',', maybe_unserialize( $this->sdwoo_options['product_categories'] ) ),
+			'exclude_product_categories'	=> implode( ',', maybe_unserialize( $this->sdwoo_options['exclude_product_categories'] ) )
 		);
 
 		$discount_args	= apply_filters( 'sdwoo_discount_args', $discount_args );
@@ -160,13 +164,17 @@ class SDWOO_Create_Discount {
 }
 
 function woo_store_discount( $discount_args ){
-	$coupon_code		= $discount_args[ 'code' ];					// Code
-	$amount				= $discount_args[ 'amount' ];				// Coupon Amount
-	$discount_type		= $discount_args[ 'type' ];					// Type: fixed_cart, percent, fixed_product, percent_product
-	$individual_use		= $discount_args[ 'use_one' ];				// Can coupon be used with other coupons?
-	$usage_limit		= $discount_args[ 'max' ];
-	$exclude_sale_items	= $discount_args[ 'exclude_sale_items' ];	// Should the coupon be applied to items that are on sale?
-	$email 				= $discount_args[ 'email' ];
+	$coupon_code				= $discount_args['code'];					// Code
+	$amount						= $discount_args['amount'];					// Coupon Amount
+	$discount_type				= $discount_args['type'];					// Type: fixed_cart, percent, fixed_product, percent_product
+	$individual_use				= $discount_args['use_one'];				// Can coupon be used with other coupons?
+	$usage_limit				= $discount_args['max'];
+	$exclude_sale_items			= $discount_args['exclude_sale_items'];		// Should the coupon be applied to items that are on sale?
+	$email 						= $discount_args['email'];
+	$product_ids				= $discount_args['product_ids'];
+	$exclude_product_ids		= $discount_args['exclude_product_ids'];
+	$product_categories			= explode( ',', $discount_args['product_categories'] );
+	$exclude_product_categories	= explode( ',', $discount_args['exclude_product_categories'] );
 
 	$coupon = array(
 		'post_title'	=> $coupon_code,
@@ -182,12 +190,14 @@ function woo_store_discount( $discount_args ){
 	update_post_meta( $new_coupon_id, 'discount_type', $discount_type );
 	update_post_meta( $new_coupon_id, 'coupon_amount', $amount );
 	update_post_meta( $new_coupon_id, 'individual_use', $individual_use );
-	update_post_meta( $new_coupon_id, 'product_ids', '' );
-	update_post_meta( $new_coupon_id, 'exclude_product_ids', '' );
 	update_post_meta( $new_coupon_id, 'customer_email', $email );
 	update_post_meta( $new_coupon_id, 'usage_limit', $usage_limit );
 	update_post_meta( $new_coupon_id, 'exclude_sale_items', $exclude_sale_items );
 	update_post_meta( $new_coupon_id, 'expiry_date', '' );
 	update_post_meta( $new_coupon_id, 'apply_before_tax', 'yes' );
 	update_post_meta( $new_coupon_id, 'free_shipping', 'no' );
+	update_post_meta( $new_coupon_id, 'product_ids', $product_ids );
+	update_post_meta( $new_coupon_id, 'exclude_product_ids', $exclude_product_ids );
+	update_post_meta( $new_coupon_id, 'product_categories', $product_categories );
+	update_post_meta( $new_coupon_id, 'exclude_product_categories', $exclude_product_categories );
 }

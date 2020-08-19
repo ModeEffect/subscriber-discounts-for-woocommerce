@@ -4,8 +4,8 @@
  * Plugin URI: https://amplifyplugins.com
  * Description: Automatically email a discount code to new subscribers.
  * Tags: WooCommerce, MailChimp, ActiveCampaign, Discounts
- * Version: 1.3.2
- * WC tested up to: 4.3.1
+ * Version: 1.4.0
+ * WC tested up to: 4.4.0
  * Author: Scott DeLuzio
  * Author URI: https://scottdeluzio.com
  * Text Domain: sdwoo
@@ -52,14 +52,15 @@ $sdwoo_options = get_option( 'sdwoo_settings' );
 /* Include Files */
 function sdwoo_file_includes(){
 	$files = array(
-		'create-discount',
-		'options-page',
-		'mailchimp-discount',
-		'activecampaign-discount'
-	); //array for future use
+		'create-discount.php',
+		'options-page.php',
+		'mailchimp-discount.php',
+		'activecampaign-discount.php',
+		'product-category-menus.php',
+	);
 
 	foreach( $files as $file ) {
-		include( SDWOO_PLUGIN_DIR . '/includes/' . $file . '.php' );
+		include( SDWOO_PLUGIN_DIR . '/includes/' . $file );
 	}
 	global $sdwoo_options;
 	if ( isset( $sdwoo_options[ 'mailchimp_key' ] ) && $sdwoo_options[ 'mailchimp_key' ] != '' ){
