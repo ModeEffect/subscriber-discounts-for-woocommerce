@@ -47,6 +47,7 @@ function sdwoo_display_settings(){
 		'discount_amount'					=> isset( $sdwoo_options['discount_amount'] )				? $sdwoo_options['discount_amount'] : '',
 		'discount_type'						=> isset( $sdwoo_options['discount_type'] )					? $sdwoo_options['discount_type'] : '',
 		'discount_use_one'					=> isset( $sdwoo_options['discount_use_one'] )				? $sdwoo_options['discount_use_one'] : '',
+		'date_expires'						=> isset( $sdwoo_options['date_expires'] )					? $sdwoo_options['date_expires'] : '',
 		'exclude_sale'						=> isset( $sdwoo_options['exclude_sale'] )					? $sdwoo_options['exclude_sale'] : '',
 		'same_email'						=> isset( $sdwoo_options['same_email'] )					? $sdwoo_options['same_email'] : '',
 		'discount_max'						=> isset( $sdwoo_options['discount_max'] )					? $sdwoo_options['discount_max'] : '',
@@ -120,6 +121,15 @@ function sdwoo_display_settings(){
 					<td>
 						<input type="checkbox" id="sdwoo_settings[discount_use_one]" name="sdwoo_settings[discount_use_one]" value="yes" <?php checked( 'yes', $options[ 'discount_use_one' ] ); ?> />
 						<p class="description" for="sdwoo_settings[discount_use_one]"><?php _e( 'Check this box if the coupon cannot be used in conjunction with other coupons.', 'sdwoo' ); ?></p>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row" valign="top">
+						<?php _e( 'Expire Discount After', 'sdwoo' ); ?>
+					</th>
+					<td>
+						<input id="sdwoo_settings[date_expires]" name="sdwoo_settings[date_expires]" type="text" class="regular-text" value="<?php echo $options['date_expires']; ?>"/>
+						<p class="description" for="sdwoo_settings[date_expires]"><?php _e( 'Enter the number of days to expire the discount code after creation.', 'sdwoo' ); ?></p>
 					</td>
 				</tr>
 				<tr valign="top">

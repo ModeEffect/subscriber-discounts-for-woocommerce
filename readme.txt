@@ -3,8 +3,8 @@ Contributors: scott.deluzio
 Tags: WooCommerce, MailChimp, ActiveCampaign, Discounts
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FG5QVYUDG6YUA
 Requires at least: 2.9
-Tested up to: 5.5.0
-Stable tag: 1.4.0
+Tested up to: 5.5.1
+Stable tag: 1.5.0
 License: GNU v2+
 
 Easily send mailing list subscribers a discount code for joining your list.
@@ -100,6 +100,8 @@ Your webhook callback URL should be http://yourdomain.com/?trigger-special-disco
 Replace yourdomain.com with your actual website domain, and replace xxxxxxxxxxxx with the ActiveCampaign Key entered in the plugin settings.
 
 == Changelog ==
+= 1.5.0 =
+* New: Included ability to set an expiration date for the coupon code based on the number of days since the coupon code creation.
 = 1.4.0 =
 * New: Included ability to apply coupon to specific products or product categories, and exclude the coupon from use with specific products or product categories.
 = 1.3.2 =
@@ -124,5 +126,5 @@ Replace yourdomain.com with your actual website domain, and replace xxxxxxxxxxxx
 * Initial version
 
 == Upgrade Notice ==
-= 1.4.0 =
-* New: Included ability to apply coupon to specific products or product categories, and exclude the coupon from use with specific products or product categories.
+= 1.5.0 =
+* New: Included ability to set an expiration date for the coupon code based on the number of days since the coupon code creation.
