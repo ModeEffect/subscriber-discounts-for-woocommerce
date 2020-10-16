@@ -209,27 +209,3 @@ function woo_store_discount( $discount_args ){
 	update_post_meta( $new_coupon_id, 'product_categories', $product_categories );
 	update_post_meta( $new_coupon_id, 'exclude_product_categories', $exclude_product_categories );
 }
-
-add_action( 'admin_init', 'test_discount_creation' );
-function test_discount_creation() {
-	$sdwoo_options = get_option( 'sdwoo_settings' );
-	$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	$final_code = 'test-' . substr( str_shuffle( $permitted_chars ), 0, 16);
-
-	$email_address = 'scott.deluzio+test@gmail.com';
-	$discount_args	= array(
-		'code'							=> $final_code,
-		'email'							=> 'yes' == $sdwoo_options[ 'same_email' ] ? $email_address : '',
-		'max'							=> $sdwoo_options[ 'discount_max' ],
-		'amount'						=> $sdwoo_options[ 'discount_amount' ],
-		'type'							=> $sdwoo_options[ 'discount_type' ],
-		'date_expires'					=> $sdwoo_options[ 'date_expires' ],
-		'use_one'						=> 'yes' == $sdwoo_options[ 'discount_use_one' ] ? 'yes' : 'no',
-		'exclude_sale_items'			=> 'yes' == $sdwoo_options[ 'exclude_sale' ] ? 'yes' : '',
-		'product_ids'					=> implode( ',', maybe_unserialize( $sdwoo_options['product_ids'] ) ),
-		'exclude_product_ids'			=> implode( ',', maybe_unserialize( $sdwoo_options['exclude_product_ids'] ) ),
-		'product_categories'			=> implode( ',', maybe_unserialize( $sdwoo_options['product_categories'] ) ),
-		'exclude_product_categories'	=> implode( ',', maybe_unserialize( $sdwoo_options['exclude_product_categories'] ) )
-	);
-	woo_store_discount( $discount_args );
-}
