@@ -66,6 +66,19 @@ function sdwoo_sanitize_settings($options) {
 			$options[$key] = sanitize_text_field( $options[ $key ] );
 		}
 	}
+	
+	$as_arrays = array(
+		'product_ids',
+		'exclude_product_ids',
+		'product_categories',
+		'exclude_product_categories',
+	);
+
+	foreach ( $as_arrays as $key ) {
+		if (! is_array( $options[$key] ) ) {
+			$options[$key] = [];
+		}
+	}
 
 	return $options;
 }
