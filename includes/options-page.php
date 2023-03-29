@@ -21,8 +21,66 @@ function admin_settings_page(){
 function sdwoo_register_settings(){
 	register_setting(
 		'subscriber_discounts_settings_group',
-		'sdwoo_settings'
+		'sdwoo_settings',
+		array(
+			'sanitize_callback' => 'sdwoo_sanitize_settings',
+		)
 	);
+}
+
+/**
+ * Sanitize settings.
+ */
+function sdwoo_sanitize_settings($options) {
+	$keys = array(
+		'mailchimp_key',
+		'activecampaign_key',
+		'discount_amount',
+		'discount_type',
+		'discount_use_one',
+		'date_expires',
+		'exclude_sale',
+		'same_email',
+		'discount_max',
+		'email_subject',
+		'from_email',
+		'from_name',
+		'name_placeholder',
+		'message',
+		'product_ids',
+		'exclude_product_ids',
+		'product_categories',
+		'exclude_product_categories',
+	);
+
+	foreach( $keys as $key ) {
+		if ( ! array_key_exists( $key, $options ) ) {
+			$options[$key] = null;
+
+			continue;
+		}
+
+		if ( is_array( $options[$key] ) ) {
+			$options[$key] = array_map( 'sanitize_text_field', $options[$key] );
+		} else if ( is_scalar( $options[$key] ) ) {
+			$options[$key] = sanitize_text_field( $options[ $key ] );
+		}
+	}
+	
+	$as_arrays = array(
+		'product_ids',
+		'exclude_product_ids',
+		'product_categories',
+		'exclude_product_categories',
+	);
+
+	foreach ( $as_arrays as $key ) {
+		if (! is_array( $options[$key] ) ) {
+			$options[$key] = [];
+		}
+	}
+
+	return $options;
 }
 
 add_action( 'admin_enqueue_scripts', 'sdwoo_searchable_menus' );
