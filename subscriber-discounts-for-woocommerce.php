@@ -5,7 +5,7 @@
  * Description: Automatically email a discount code to new subscribers.
  * Tags: WooCommerce, MailChimp, ActiveCampaign, Discounts
  * Version: 1.5.2
- * WC tested up to: 5.7.1
+ * Tested up to: 6.1.1
  * Author: AMP-MODE
  * Author URI: https://amplifyplugins.com
  * Text Domain: sdwoo
